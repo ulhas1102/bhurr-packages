@@ -145,7 +145,7 @@
         }
 
         /* Amount section */
-      
+
 
         .booking--form p.text-muted {
             font-size: 0.85rem;
@@ -167,25 +167,7 @@
 </head>
 
 <body>
-    <section class="py-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <!-- Breadcrumbs -->
-                    <nav aria-label="breadcrumb" class=" py-3">
-                        <div class="container">
-                            <ol class="breadcrumb mb-0">
-                                <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Collections</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Luxury Experience</li>
-                            </ol>
-                        </div>
-                    </nav>
 
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="hero--banner py-md-5 py-3">
         <div class="container">
             <fiv class="row">
@@ -203,7 +185,7 @@
             <div class="row g-0 flex-column flex-md-row">
                 <!-- Left Image Section -->
                 <div class="col-md-5">
-                    <img src="https://taxicoimbatore.com/admin/Upload/packages/14.jpg"
+                    <img loading="lazy" src="https://taxicoimbatore.com/admin/Upload/packages/14.jpg"
                         alt="Coimbatore - Black Thunder Water Theme Park - Coimbatore"
                         class="img-fluid h-100 w-100 object-fit-cover ratio-16by9">
                 </div>
@@ -261,106 +243,87 @@
                             <!-- Name -->
                             <div class="col-12">
                                 <label class="form-label">Name</label>
-                                <input type="text" name="txtFanme" class="form-control" placeholder="Your Name" required>
+                                <input type="text" name="txtFanme" class="form-control" placeholder="Your Name"
+                                    required>
                             </div>
-            
+
                             <!-- Email -->
                             <div class="col-md-6">
                                 <label class="form-label">Email</label>
-                                <input type="email" name="txtEmail" class="form-control" placeholder="Your Email" required>
+                                <input type="email" name="txtEmail" class="form-control" placeholder="Your Email"
+                                    required>
                             </div>
-            
+
                             <!-- Phone -->
                             <div class="col-md-6">
                                 <label class="form-label">Phone Number</label>
-                                <input type="text" name="txtMobile" pattern="[0-9]{10}" class="form-control" placeholder="Your Phone" required>
+                                <input type="text" name="txtMobile" pattern="[0-9]{10}" class="form-control"
+                                    placeholder="Your Phone" required>
                             </div>
-            
+
                             <!-- Pickup Date -->
                             <div class="col-md-6">
                                 <label class="form-label">Pickup Date</label>
                                 <input type="date" name="txt_pickdate" class="form-control" required>
                             </div>
-            
+
                             <!-- Pickup Time -->
                             <div class="col-md-6">
                                 <label class="form-label">Pickup Time</label>
                                 <input type="time" name="txt_picktime" class="form-control" required>
                             </div>
-            
+
                             <!-- Adult -->
                             <div class="col-md-6">
                                 <label class="form-label">Adult</label>
-                                <input type="number" name="txtAdult" min="0" class="form-control" placeholder="Adult" required>
+                                <input type="number" name="txtAdult" min="0" class="form-control" placeholder="Adult"
+                                    required>
                             </div>
-            
+
                             <!-- Child -->
                             <div class="col-md-6">
                                 <label class="form-label">Child</label>
-                                <input type="number" name="txtChild" min="0" value="0" class="form-control" placeholder="Child">
+                                <input type="number" name="txtChild" min="0" value="0" class="form-control"
+                                    placeholder="Child">
                             </div>
-            
+
                             <!-- Pickup Location -->
                             <div class="col-md-6">
                                 <label class="form-label">Pickup Location</label>
-                                <textarea id="autocomplete" class="form-control" placeholder="Pickup Location" required></textarea>
+                                <textarea id="autocomplete" class="form-control" placeholder="Pickup Location"
+                                    required></textarea>
                             </div>
-            
+
                             <!-- Drop Location -->
                             <div class="col-md-6">
                                 <label class="form-label">Drop Location</label>
-                                <textarea id="autocompletes" class="form-control" placeholder="Drop Location" required></textarea>
+                                <textarea id="autocompletes" class="form-control" placeholder="Drop Location"
+                                    required></textarea>
                             </div>
-            
+
                             <!-- State -->
                             <div class="col-md-6">
                                 <label class="form-label">State</label>
                                 <input type="text" name="txtState" class="form-control" placeholder="State" required>
                             </div>
-            
-                            <!-- Payments -->
-                            <div class="col-12 pt-1">
-                                <label class="form-label fw-bold">Payments</label>
-                                <div class="d-flex flex-wrap gap-4">
-                                    <div class="form-check">
-                                        <input type="radio" class="form-check-input" name="mop" id="paymentDriver" value="Driver" checked>
-                                        <label class="form-check-label" for="paymentDriver">Driver</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" class="form-check-input" name="mop" id="paymentOffice" value="Office">
-                                        <label class="form-check-label" for="paymentOffice">Office</label>
-                                    </div>
-                                </div>
-                            </div>
-            
-                            <!-- Payment Type -->
-                            <div class="col-12">
-                                <label class="form-label fw-bold">Select Payment Type</label>
-                                <div class="d-flex flex-wrap gap-4">
-                                    <div class="form-check">
-                                        <input type="radio" class="form-check-input" name="amount_selection" id="fullPayment" value="1" checked>
-                                        <label class="form-check-label" for="fullPayment">Full Payment</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input type="radio" class="form-check-input" name="amount_selection" id="halfPayment" value="2">
-                                        <label class="form-check-label" for="halfPayment">Off Payment (20%)</label>
-                                    </div>
-                                </div>
-                            </div>
-            
+
+
+
+
+
                             <!-- Payable Amount -->
                             <div class="col-12">
                                 <label id="fullamount" class="fs-4 fw-bold">Payable Amount ₹4,751.25</label>
                             </div>
                             <!-- Submit Button -->
                             <div class="col-12">
-                                <a href="#" class="btn common__btn px-4 rounded">Book Cab</a>
+                                <a href="main-packages.html" class="btn common__btn px-4 rounded">Book Cab</a>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            
+
         </div>
     </div>
 
