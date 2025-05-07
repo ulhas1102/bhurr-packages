@@ -38,14 +38,14 @@
             font-size: 20px;
         }
 
-        .journey-package-card {
+        .journey-card {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-radius: 15px;
             overflow: hidden;
 
         }
 
-        .journey-package-card .badge {
+        .journey-card .badge {
             background-color: var(--heading-text-color);
         }
 
@@ -55,12 +55,12 @@
             color: black;
         }
 
-        .journey-package-card:hover {
+        .journey-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
-        .journey-package-card img.card-img-top {
+        .journey-card img.card-img-top {
             aspect-ratio: 16 / 11;
             /* or 4 / 3, or 3 / 2 — based on your design */
             width: 100%;
@@ -69,40 +69,9 @@
             /* optional rounded top corners */
         }
 
-        .journey-package-card .card-title {
-            font-size: 21px;
-            font-weight: 500;
-        }
-
-        .journey-package-card .package--price {
+        .package--price {
             font-weight: 500;
             color: var(--primary-text-color);
-        }
-
-        .journey-package-card .tour-duration p {
-            color: #6c757d;
-            font-size: 14px;
-        }
-
-        .journey-package-card .tour-desc {
-            color: #737373;
-            font-size: 15px;
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
-
-        .journey-package-card .label {
-            position: absolute;
-            top: 22px;
-            left: 25px;
-            border-radius: 50px;
-            font-size: 14px;
-            line-height: 22px;
-            font-weight: 700;
-            color: var(--primary-color);
-            z-index: 12;
-            padding: 5px 22px;
-            background-color: white;
         }
     </style>
 </head>
@@ -113,7 +82,7 @@
         <div class="container">
             <fiv class="row">
                 <div class="col-md-12 text-center">
-                    <h1>Packages</h1>
+                    <h1>One Day Tour Packages</h1>
                     <p class="">
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab, cupiditate.
                     </p>
@@ -124,235 +93,134 @@
     <section class="py-md-5 py-3">
         <div class="container">
             <div class="row g-3">
-                <div class="col-lg-4 col-md-3">
-                    <div class="card journey-package-card shadow-sm  h-100">
+                <!-- Card 1 -->
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <div class="card journey-card shadow-sm  h-100">
                         <div class="position-relative">
-                            <div class="label">Top Rated</div>
+                            <i
+                                class="fas fa-car p-2 rounded-circle position-absolute top-0 end-0 m-2 wishlist-icon"></i>
 
-                            <img loading="lazy" src="https://www.taxicoimbatore.com/img/eight.jpg" class="card-img-top rounded-top"
-                                alt="Tour Image">
+                            <img loading="lazy" src="https://www.taxicoimbatore.com/admin/Upload/packages/14.jpg"
+                                class="card-img-top rounded-top" alt="Tour Image">
                         </div>
                         <div class="card-body d-flex flex-column">
-                            <!-- <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge">2 Cars Available</span>
-                                <span class="text-muted small">Half Day Tour</span>
-                            </div> -->
-                            <h6 class="card-title fw-bold text-dark">
-                                One Day Tour Packages
-                            </h6>
-                            <p class="tour-desc">Ooty Centenary Rose Garden, Boat House,
-                                Children Park, Government Museum, Dodabeta Peak,
-                                Botanical Garden, Coonoor Sims Park, Wax Museum , Ketti Valley View.</p>
-                            <div class="tour-duration d-flex gap-3">
-                                <p class="">
-                                    <i class="fas fa-clock me-1"></i> 1 day
-                                </p>
-                                <p class="">
-                                    <i class="fas fa-user-friends me-1"></i> 4–10 guests
-                                </p>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge">5 Cars Available</span>
+                                <span class="text-muted small">1 Day Package</span>
                             </div>
-
+                            <h6 class="card-title fw-bold text-dark">
+                                Coimbatore - Black Thunder Water Theme Park
+                            </h6>
+                            <div class="mb-2">
+                                <span class="text-warning">★★★★★</span>
+                            </div>
                             <div class="d-flex justify-content-between align-items-end mt-auto">
                                 <div>
-                                    <h6 class="package--price mb-0">₹2999.00</h6>
+                                    <h6 class="package--price mb-0">₹4525.00</h6>
                                     <small class="text-muted">/ Per Package</small>
                                 </div>
-                                <a href="./index.html" class="btn common__btn rounded btn-sm">View Package</a>
+                                <a href="./packages.html" class="btn common__btn rounded btn-sm">View Package</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-3">
-                    <div class="card journey-package-card shadow-sm  h-100">
-                        <div class="position-relative">
-                            <div class="label">Top Rated</div>
 
-                            <img loading="lazy" src="https://www.taxicoimbatore.com/img/five.jpg" class="card-img-top rounded-top"
-                                alt="Tour Image">
+                <!-- Card 2 -->
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <div class="card journey-card shadow-sm  h-100">
+                        <div class="position-relative">
+                            <i
+                                class="fas fa-car p-2 rounded-circle position-absolute top-0 end-0 m-2 wishlist-icon"></i>
+                            <img loading="lazy" src="https://www.taxicoimbatore.com/admin/Upload/packages/7.jpg"
+                                class="card-img-top rounded-top" alt="Tour Image">
                         </div>
                         <div class="card-body d-flex flex-column">
-                            <!-- <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge">2 Cars Available</span>
-                                <span class="text-muted small">Half Day Tour</span>
-                            </div> -->
-                            <h6 class="card-title fw-bold text-dark">
-                                Two Day Tour Packages
-                            </h6>
-                            <p class="tour-desc">Ooty Centenary Rose Garden, Boat House,
-                                Children Park, Government Museum, Dodabeta Peak,
-                                Botanical Garden, Coonoor Sims Park, Wax Museum , Ketti Valley View.</p>
-                            <div class="tour-duration d-flex gap-3">
-                                <p class="">
-                                    <i class="fas fa-clock me-1"></i> 1 day
-                                </p>
-                                <p class="">
-                                    <i class="fas fa-user-friends me-1"></i> 4–10 guests
-                                </p>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge">3 Cars Available</span>
+                                <span class="text-muted small">1 Day Package</span>
                             </div>
-
+                            <h6 class="card-title fw-bold text-dark">
+                                Coimbatore - Ooty Hill Station
+                            </h6>
+                            <div class="mb-2">
+                                <span class="text-warning">★★★★☆</span>
+                            </div>
                             <div class="d-flex justify-content-between align-items-end mt-auto">
                                 <div>
-                                    <h6 class="package--price mb-0">₹2999.00</h6>
+                                    <h6 class="package--price mb-0">₹7999.00</h6>
                                     <small class="text-muted">/ Per Package</small>
                                 </div>
-                                <a href="./index.html" class="btn common__btn rounded btn-sm">View Package</a>
+                                <a href="./packages.html" class="btn common__btn rounded btn-sm">View Package</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-3">
-                    <div class="card journey-package-card shadow-sm  h-100">
-                        <div class="position-relative">
-                            <div class="label">Top Rated</div>
 
-                            <img loading="lazy" src="https://www.taxicoimbatore.com/img/six.jpg" class="card-img-top rounded-top"
-                                alt="Tour Image">
+                <!-- Card 3 -->
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <div class="card journey-card shadow-sm  h-100">
+                        <div class="position-relative">
+                            <i
+                                class="fas fa-car p-2 rounded-circle position-absolute top-0 end-0 m-2 wishlist-icon"></i>
+
+                            <img loading="lazy" src="https://www.taxicoimbatore.com/admin/Upload/packages/9.jpg"
+                                class="card-img-top rounded-top" alt="Tour Image">
                         </div>
                         <div class="card-body d-flex flex-column">
-                            <!-- <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
                                 <span class="badge">2 Cars Available</span>
-                                <span class="text-muted small">Half Day Tour</span>
-                            </div> -->
-                            <h6 class="card-title fw-bold text-dark">
-                                Three Day Tour Packages
-                            </h6>
-                            <p class="tour-desc">Ooty Centenary Rose Garden, Boat House,
-                                Children Park, Government Museum, Dodabeta Peak,
-                                Botanical Garden, Coonoor Sims Park, Wax Museum , Ketti Valley View.</p>
-                            <div class="tour-duration d-flex gap-3">
-                                <p class="">
-                                    <i class="fas fa-clock me-1"></i> 1 day
-                                </p>
-                                <p class="">
-                                    <i class="fas fa-user-friends me-1"></i> 4–10 guests
-                                </p>
+                                <span class="text-muted small">1 Day Package</span>
                             </div>
-
+                            <h6 class="card-title fw-bold text-dark">
+                                Coimbatore - Isha Yoga & Adiyogi Visit
+                            </h6>
+                            <div class="mb-2">
+                                <span class="text-warning">★★★★☆</span>
+                            </div>
                             <div class="d-flex justify-content-between align-items-end mt-auto">
                                 <div>
                                     <h6 class="package--price mb-0">₹2999.00</h6>
                                     <small class="text-muted">/ Per Package</small>
                                 </div>
-                                <a href="./index.html" class="btn common__btn rounded btn-sm">View Package</a>
+                                <a href="./packages.html" class="btn common__btn rounded btn-sm">View Package</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-3">
-                    <div class="card journey-package-card shadow-sm  h-100">
-                        <div class="position-relative">
-                            <div class="label">Top Rated</div>
 
-                            <img loading="lazy" src="https://www.taxicoimbatore.com/img/eight.jpg" class="card-img-top rounded-top"
-                                alt="Tour Image">
+                <!-- Card 4 -->
+                <div class="col-lg-3 col-md-4 mb-4">
+                    <div class="card journey-card shadow-sm  h-100">
+                        <div class="position-relative">
+                            <i
+                                class="fas fa-car p-2 rounded-circle position-absolute top-0 end-0 m-2 wishlist-icon"></i>
+
+                            <img loading="lazy" src="https://www.taxicoimbatore.com/admin/Upload/packages/10.jpg"
+                                class="card-img-top rounded-top" alt="Tour Image">
                         </div>
                         <div class="card-body d-flex flex-column">
-                            <!-- <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge">2 Cars Available</span>
-                                <span class="text-muted small">Half Day Tour</span>
-                            </div> -->
-                            <h6 class="card-title fw-bold text-dark">
-                                One Day Tour Packages
-                            </h6>
-                            <p class="tour-desc">Ooty Centenary Rose Garden, Boat House,
-                                Children Park, Government Museum, Dodabeta Peak,
-                                Botanical Garden, Coonoor Sims Park, Wax Museum , Ketti Valley View.</p>
-                            <div class="tour-duration d-flex gap-3">
-                                <p class="">
-                                    <i class="fas fa-clock me-1"></i> 1 day
-                                </p>
-                                <p class="">
-                                    <i class="fas fa-user-friends me-1"></i> 4–10 guests
-                                </p>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge">4 Cars Available</span>
+                                <span class="text-muted small">1 Day Package</span>
                             </div>
-
+                            <h6 class="card-title fw-bold text-dark">
+                                Coimbatore - Valparai Hill Drive
+                            </h6>
+                            <div class="mb-2">
+                                <span class="text-warning">★★★☆☆</span>
+                            </div>
                             <div class="d-flex justify-content-between align-items-end mt-auto">
                                 <div>
-                                    <h6 class="package--price mb-0">₹2999.00</h6>
+                                    <h6 class="package--price mb-0">₹6500.00</h6>
                                     <small class="text-muted">/ Per Package</small>
                                 </div>
-                                <a href="./index.html" class="btn common__btn rounded btn-sm">View Package</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-3">
-                    <div class="card journey-package-card shadow-sm  h-100">
-                        <div class="position-relative">
-                            <div class="label">Top Rated</div>
-
-                            <img loading="lazy" src="https://www.taxicoimbatore.com/img/five.jpg" class="card-img-top rounded-top"
-                                alt="Tour Image">
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <!-- <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge">2 Cars Available</span>
-                                <span class="text-muted small">Half Day Tour</span>
-                            </div> -->
-                            <h6 class="card-title fw-bold text-dark">
-                                Two Day Tour Packages
-                            </h6>
-                            <p class="tour-desc">Ooty Centenary Rose Garden, Boat House,
-                                Children Park, Government Museum, Dodabeta Peak,
-                                Botanical Garden, Coonoor Sims Park, Wax Museum , Ketti Valley View.</p>
-                            <div class="tour-duration d-flex gap-3">
-                                <p class="">
-                                    <i class="fas fa-clock me-1"></i> 1 day
-                                </p>
-                                <p class="">
-                                    <i class="fas fa-user-friends me-1"></i> 4–10 guests
-                                </p>
-                            </div>
-
-                            <div class="d-flex justify-content-between align-items-end mt-auto">
-                                <div>
-                                    <h6 class="package--price mb-0">₹2999.00</h6>
-                                    <small class="text-muted">/ Per Package</small>
-                                </div>
-                                <a href="./index.html" class="btn common__btn rounded btn-sm">View Package</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-3">
-                    <div class="card journey-package-card shadow-sm  h-100">
-                        <div class="position-relative">
-                            <div class="label">Top Rated</div>
-
-                            <img loading="lazy" src="https://www.taxicoimbatore.com/img/six.jpg" class="card-img-top rounded-top"
-                                alt="Tour Image">
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <!-- <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge">2 Cars Available</span>
-                                <span class="text-muted small">Half Day Tour</span>
-                            </div> -->
-                            <h6 class="card-title fw-bold text-dark">
-                                Three Day Tour Packages
-                            </h6>
-                            <p class="tour-desc">Ooty Centenary Rose Garden, Boat House,
-                                Children Park, Government Museum, Dodabeta Peak,
-                                Botanical Garden, Coonoor Sims Park, Wax Museum , Ketti Valley View.</p>
-                            <div class="tour-duration d-flex gap-3">
-                                <p class="">
-                                    <i class="fas fa-clock me-1"></i> 1 day
-                                </p>
-                                <p class="">
-                                    <i class="fas fa-user-friends me-1"></i> 4–10 guests
-                                </p>
-                            </div>
-
-                            <div class="d-flex justify-content-between align-items-end mt-auto">
-                                <div>
-                                    <h6 class="package--price mb-0">₹2999.00</h6>
-                                    <small class="text-muted">/ Per Package</small>
-                                </div>
-                                <a href="./index.html" class="btn common__btn rounded btn-sm">View Package</a>
+                                <a href="./packages.html" class="btn common__btn rounded btn-sm">View Package</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
