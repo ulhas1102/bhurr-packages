@@ -13,157 +13,7 @@
     <link rel="stylesheet" href="https://www.bhurr.co.in/new-layouts/assets/css/driver.css" />
     <link rel="stylesheet" href="https://www.bhurr.co.in/new-layouts/assets/css/hotel.css" />
     <!-- Custom Styles (Optional) -->
-    <style>
-        .hero--banner {
-            align-content: center;
-            min-height: 70vh;
-            background-image: url('./assets/img/banner-package.webp');
-            background-position: bottom;
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-        .hero--banner h1 {
-            font-size: 40px;
-            font-weight: 600;
-            color: white;
-        }
-
-        .hero--banner p {
-            color: white;
-            font-size: 20px;
-        }
-
-        .package--info .place-name {
-            font-size: 24px;
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
-
-        .package--info .package-type {
-            font-size: 19px;
-            font-weight: 600;
-            color: #68696a;
-
-        }
-
-        .package--info img {
-            aspect-ratio: 16/9;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        /* Main container */
-        .booking--form {
-            background: #fdfdfd;
-            padding: 2.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            border: 1px solid #ddd;
-            transition: all 0.3s ease-in-out;
-        }
-
-        /* Label styling */
-        .booking--form .form-label {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #222;
-            margin-bottom: 6px;
-        }
-
-        /* Input, Textarea, Select */
-        .booking--form .form-control {
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            padding: 12px 16px;
-            font-size: 0.95rem;
-            background-color: #fff;
-            transition: 0.3s ease;
-        }
-
-        .booking--form .form-control:focus {
-            border-color: #0d6efd;
-            box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.15);
-            outline: none;
-        }
-
-        /* Radio button section */
-        .booking--form .form-check {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-right: 20px;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .booking--form .form-check-input {
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            border: 2px solid #0d6efd;
-            border-radius: 50%;
-            position: relative;
-            transition: 0.2s ease-in-out;
-            margin-top: 2px;
-            cursor: pointer;
-        }
-
-        .booking--form .form-check-input:checked {
-            background-color: #0d6efd;
-        }
-
-        .booking--form .form-check-input:checked::after {
-            content: "";
-            position: absolute;
-            top: 4px;
-            left: 4px;
-            width: 6px;
-            height: 6px;
-            background: white;
-            border-radius: 50%;
-        }
-
-        .booking--form .form-check-label {
-            margin-bottom: 0;
-            font-size: 0.95rem;
-            color: #333;
-        }
-
-        /* Button */
-        .booking--form button[type="submit"] {
-            padding: 12px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            border-radius: 10px;
-            transition: 0.3s;
-        }
-
-        .booking--form button[type="submit"]:hover {
-            background-color: #0b5ed7;
-            box-shadow: 0 5px 20px rgba(13, 110, 253, 0.2);
-        }
-
-        /* Amount section */
-
-
-        .booking--form p.text-muted {
-            font-size: 0.85rem;
-            margin-top: 5px;
-        }
-
-        /* Responsive */
-        @media (max-width: 576px) {
-            .booking--form {
-                padding: 1.5rem;
-            }
-
-            .booking--form .d-flex {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
+   <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
@@ -289,32 +139,31 @@
 
                             <!-- Pickup Location -->
                             <div class="col-md-6">
-                                <label class="form-label">Pickup Location</label>
+                                <label class="form-label">Pickup/Drop Location</label>
                                 <textarea id="autocomplete" class="form-control" placeholder="Pickup Location"
                                     required></textarea>
                             </div>
+                            <!-- Payable Amount Options -->
+                            <div class="col-12 mb-3">
+                                <label class="fs-5 fw-bold d-block mb-2">Select Payment Option:</label>
 
-                            <!-- Drop Location -->
-                            <div class="col-md-6">
-                                <label class="form-label">Drop Location</label>
-                                <textarea id="autocompletes" class="form-control" placeholder="Drop Location"
-                                    required></textarea>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input" type="radio" name="paymentOption" id="fullPayment"
+                                        checked>
+                                    <label class="form-check-label" for="fullPayment">
+                                        Full Payment – <strong>₹4,751.25</strong>
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="paymentOption"
+                                        id="partialPayment">
+                                    <label class="form-check-label" for="partialPayment">
+                                        Partial Payment – <strong>₹2,000.00</strong>
+                                    </label>
+                                </div>
                             </div>
 
-                            <!-- State -->
-                            <div class="col-md-6">
-                                <label class="form-label">State</label>
-                                <input type="text" name="txtState" class="form-control" placeholder="State" required>
-                            </div>
-
-
-
-
-
-                            <!-- Payable Amount -->
-                            <div class="col-12">
-                                <label id="fullamount" class="fs-4 fw-bold">Payable Amount ₹4,751.25</label>
-                            </div>
                             <!-- Submit Button -->
                             <div class="col-12">
                                 <a href="index.html" class="btn common__btn px-4 rounded">Book Cab</a>

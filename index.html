@@ -15,72 +15,7 @@
     <!-- Custom Styles (Optional) -->
     <link rel="stylesheet" href="./assets/css/style.css">
     <style>
-        .filter-container {
-            padding: 15px;
-            /* background-color: #f8f9fa; */
-            border-radius: 15px;
-            border: 1px solid #c2c3c5;
-            position: sticky;
-            top: 10px;
-        }
 
-        .filter-container label {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .filter-container select,
-        .filter-container .btn {
-            width: 100%;
-            padding: 10px;
-            /* margin-bottom: 15px; */
-        }
-
-        .selected-filters {
-            padding: 0 5px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 5px;
-            position: sticky;
-            z-index: 10;
-            top: 0px;
-            background-color: rgb(247, 243, 243);
-
-        }
-
-        .selected-filter {
-            margin: 5px 0;
-            background-color: var(--heading-text-color);
-            color: white;
-            padding: 2px 5px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            font-size: 13px;
-        }
-
-        .selected-filter span {
-            margin-right: 4px;
-        }
-
-        .remove-btn {
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 16px;
-            margin-left: 5px;
-        }
-
-        .dropdown-menu {
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        [data-bs-target="#filterModal"] {
-            position: absolute;
-            top: 0;
-            background-color: none;
-        }
     </style>
 </head>
 
@@ -456,28 +391,28 @@
             selectFilter('Theme', this.value);
         });
     </script>
-   <script>
-    function extractCodeForSmallScreens() {
-        const mobilefilter = document.getElementById("mobilefilter");
-        const filterCode = document.getElementById("filterCode");
-        const selectedFilters = document.getElementById("selectedFilters");
+    <script>
+        function extractCodeForSmallScreens() {
+            const mobilefilter = document.getElementById("mobilefilter");
+            const filterCode = document.getElementById("filterCode");
+            const selectedFilters = document.getElementById("selectedFilters");
 
-        if (window.innerWidth < 768 && filterCode && selectedFilters) {
-            console.log("Screen is smaller than col-md-6 (768px)");
+            if (window.innerWidth < 768 && filterCode && selectedFilters) {
+                console.log("Screen is smaller than col-md-6 (768px)");
 
-            const div = document.createElement("div"); // Fixed here
+                const div = document.createElement("div"); // Fixed here
 
-            // Move the actual elements
-            div.appendChild(selectedFilters);
-            div.appendChild(filterCode);
+                // Move the actual elements
+                div.appendChild(selectedFilters);
+                div.appendChild(filterCode);
 
-            mobilefilter.appendChild(div);
+                mobilefilter.appendChild(div);
+            }
         }
-    }
 
-    window.addEventListener('load', extractCodeForSmallScreens);
-    window.addEventListener('resize', extractCodeForSmallScreens);
-</script>
+        window.addEventListener('load', extractCodeForSmallScreens);
+        window.addEventListener('resize', extractCodeForSmallScreens);
+    </script>
 
 
 
