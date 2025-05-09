@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>House of Sameer Raza</title>
+    <title>Package</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -13,96 +13,73 @@
     <link rel="stylesheet" href="https://www.bhurr.co.in/new-layouts/assets/css/driver.css" />
     <link rel="stylesheet" href="https://www.bhurr.co.in/new-layouts/assets/css/hotel.css" />
     <!-- Custom Styles (Optional) -->
+    <link rel="stylesheet" href="./assets/css/style.css">
     <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        .hero--banner {
-            align-content: center;
-            min-height: 70vh;
-            background-image: url('./assets/img/banner-package.webp');
-            background-position: bottom;
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-
-        .hero--banner h1 {
-            font-size: 40px;
-            font-weight: 600;
-            color: white;
-        }
-
-        .hero--banner p {
-            color: white;
-            font-size: 20px;
-        }
-
-        .journey-package-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .filter-container {
+            padding: 15px;
+            /* background-color: #f8f9fa; */
             border-radius: 15px;
-            overflow: hidden;
-
+            border: 1px solid #c2c3c5;
+            position: sticky;
+            top: 10px;
         }
 
-        .journey-package-card .badge {
-            background-color: var(--heading-text-color);
+        .filter-container label {
+            font-weight: 600;
+            margin-bottom: 5px;
         }
 
-        .fas.fa-car.wishlist-icon {
-            font-size: 12px;
-            border: 1px solid black;
-            color: black;
-        }
-
-        .journey-package-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .journey-package-card img.card-img-top {
-            aspect-ratio: 16 / 11;
-            /* or 4 / 3, or 3 / 2 — based on your design */
+        .filter-container select,
+        .filter-container .btn {
             width: 100%;
-            object-fit: cover;
-            border-radius: 0.5rem 0.5rem 0 0;
-            /* optional rounded top corners */
+            padding: 10px;
+            /* margin-bottom: 15px; */
         }
 
-        .journey-package-card .card-title {
-            font-size: 21px;
-            font-weight: 500;
+        .selected-filters {
+            padding: 0 5px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 5px;
+            position: sticky;
+            z-index: 10;
+            top: 0px;
+            background-color: rgb(247, 243, 243);
+
         }
 
-        .journey-package-card .package--price {
-            font-weight: 500;
-            color: var(--primary-text-color);
+        .selected-filter {
+            margin: 5px 0;
+            background-color: var(--heading-text-color);
+            color: white;
+            padding: 2px 5px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            font-size: 13px;
         }
 
-        .journey-package-card .tour-duration p {
-            color: #6c757d;
-            font-size: 14px;
+        .selected-filter span {
+            margin-right: 4px;
         }
 
-        .journey-package-card .tour-desc {
-            color: #737373;
-            font-size: 15px;
-            font-weight: 500;
-            margin-bottom: 10px;
+        .remove-btn {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            margin-left: 5px;
         }
 
-        .journey-package-card .label {
+        .dropdown-menu {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        [data-bs-target="#filterModal"] {
             position: absolute;
-            top: 22px;
-            left: 25px;
-            border-radius: 50px;
-            font-size: 14px;
-            line-height: 22px;
-            font-weight: 700;
-            color: var(--primary-color);
-            z-index: 12;
-            padding: 5px 22px;
-            background-color: white;
+            top: 0;
+            background-color: none;
         }
     </style>
 </head>
@@ -123,236 +100,287 @@
     </section>
     <section class="py-md-5 py-3">
         <div class="container">
-            <div class="row g-3">
-                <div class="col-lg-4 col-md-3">
-                    <div class="card journey-package-card shadow-sm  h-100">
-                        <div class="position-relative">
-                            <div class="label">Top Rated</div>
-
-                            <img loading="lazy" src="https://www.taxicoimbatore.com/img/eight.jpg" class="card-img-top rounded-top"
-                                alt="Tour Image">
+            <div class="row g-3 position-relative">
+                <div class="col-md-4 d-md-">
+                    <div class="filter-container" id="filterCode">
+                        <!-- Category Filter -->
+                        <div class="mb-1">
+                            <label for="filterCategory" class="form-label">Category</label>
+                            <select id="filterCategory" class="form-select custom-select">
+                                <option selected disabled>Select Category</option>
+                                <option>One Day</option>
+                                <option>Two Days</option>
+                                <option>Three Days</option>
+                                <option>Weekend</option>
+                            </select>
                         </div>
-                        <div class="card-body d-flex flex-column">
-                            <!-- <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge">2 Cars Available</span>
-                                <span class="text-muted small">Half Day Tour</span>
-                            </div> -->
-                            <h6 class="card-title fw-bold text-dark">
-                                One Day Tour Packages
-                            </h6>
-                            <p class="tour-desc">Ooty Centenary Rose Garden, Boat House,
-                                Children Park, Government Museum, Dodabeta Peak,
-                                Botanical Garden, Coonoor Sims Park, Wax Museum , Ketti Valley View.</p>
-                            <div class="tour-duration d-flex gap-3">
-                                <p class="">
-                                    <i class="fas fa-clock me-1"></i> 1 day
-                                </p>
-                                <p class="">
-                                    <i class="fas fa-user-friends me-1"></i> 4–10 guests
-                                </p>
-                            </div>
 
-                            <div class="d-flex justify-content-between align-items-end mt-auto">
-                                <div>
-                                    <h6 class="package--price mb-0">₹2999.00</h6>
-                                    <small class="text-muted">/ Per Package</small>
-                                </div>
-                                <a href="./main-packages.html" class="btn common__btn rounded btn-sm">View Package</a>
-                            </div>
+                        <!-- Days Filter -->
+                        <div class="mb-1">
+                            <label for="filterDays" class="form-label">Days</label>
+                            <select id="filterDays" class="form-select custom-select">
+                                <option selected disabled>Select Days</option>
+                                <option>1 Day</option>
+                                <option>2 Days</option>
+                                <option>3 Days</option>
+                                <option>4+ Days</option>
+                            </select>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-3">
-                    <div class="card journey-package-card shadow-sm  h-100">
-                        <div class="position-relative">
-                            <div class="label">Top Rated</div>
 
-                            <img loading="lazy" src="https://www.taxicoimbatore.com/img/five.jpg" class="card-img-top rounded-top"
-                                alt="Tour Image">
+                        <!-- City Filter -->
+                        <div class="mb-1">
+                            <label for="filterCity" class="form-label">City</label>
+                            <select id="filterCity" class="form-select custom-select">
+                                <option selected disabled>Select City</option>
+                                <option>Pune</option>
+                                <option>Mumbai</option>
+                                <option>Lonavala</option>
+                                <option>Mahabaleshwar</option>
+                            </select>
                         </div>
-                        <div class="card-body d-flex flex-column">
-                            <!-- <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge">2 Cars Available</span>
-                                <span class="text-muted small">Half Day Tour</span>
-                            </div> -->
-                            <h6 class="card-title fw-bold text-dark">
-                                Two Day Tour Packages
-                            </h6>
-                            <p class="tour-desc">Ooty Centenary Rose Garden, Boat House,
-                                Children Park, Government Museum, Dodabeta Peak,
-                                Botanical Garden, Coonoor Sims Park, Wax Museum , Ketti Valley View.</p>
-                            <div class="tour-duration d-flex gap-3">
-                                <p class="">
-                                    <i class="fas fa-clock me-1"></i> 1 day
-                                </p>
-                                <p class="">
-                                    <i class="fas fa-user-friends me-1"></i> 4–10 guests
-                                </p>
-                            </div>
 
-                            <div class="d-flex justify-content-between align-items-end mt-auto">
-                                <div>
-                                    <h6 class="package--price mb-0">₹2999.00</h6>
-                                    <small class="text-muted">/ Per Package</small>
-                                </div>
-                                <a href="./main-packages.html" class="btn common__btn rounded btn-sm">View Package</a>
-                            </div>
+                        <!-- Theme Filter -->
+                        <div class="mb-3">
+                            <label for="filterTheme" class="form-label">Theme</label>
+                            <select id="filterTheme" class="form-select custom-select">
+                                <option selected disabled>Select Theme</option>
+                                <option>Adventure</option>
+                                <option>Nature</option>
+                                <option>Family</option>
+                                <option>Romantic</option>
+                            </select>
+                        </div>
+
+                        <!-- Apply Button -->
+                        <div class="d-grid mb-2">
+                            <button class="btn common__btn rounded btn-sm w-100" onclick="applyFilters()">Apply
+                                Filter</button>
+                        </div>
+
+                        <!-- Reset Button -->
+                        <div class="d-grid mb-2">
+                            <button class="btn btn-outline-secondary btn-sm w-100"
+                                onclick="resetFilters()">Reset</button>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-3">
-                    <div class="card journey-package-card shadow-sm  h-100">
-                        <div class="position-relative">
-                            <div class="label">Top Rated</div>
-
-                            <img loading="lazy" src="https://www.taxicoimbatore.com/img/six.jpg" class="card-img-top rounded-top"
-                                alt="Tour Image">
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <!-- <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge">2 Cars Available</span>
-                                <span class="text-muted small">Half Day Tour</span>
-                            </div> -->
-                            <h6 class="card-title fw-bold text-dark">
-                                Three Day Tour Packages
-                            </h6>
-                            <p class="tour-desc">Ooty Centenary Rose Garden, Boat House,
-                                Children Park, Government Museum, Dodabeta Peak,
-                                Botanical Garden, Coonoor Sims Park, Wax Museum , Ketti Valley View.</p>
-                            <div class="tour-duration d-flex gap-3">
-                                <p class="">
-                                    <i class="fas fa-clock me-1"></i> 1 day
-                                </p>
-                                <p class="">
-                                    <i class="fas fa-user-friends me-1"></i> 4–10 guests
-                                </p>
+                <div class="modal fade" id="filterModal" tabindex="-1" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="myModalLabel">Filters</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
+                            <div class="modal-body">
+                                <div class="" id="mobilefilter">
 
-                            <div class="d-flex justify-content-between align-items-end mt-auto">
-                                <div>
-                                    <h6 class="package--price mb-0">₹2999.00</h6>
-                                    <small class="text-muted">/ Per Package</small>
                                 </div>
-                                <a href="./main-packages.html" class="btn common__btn rounded btn-sm">View Package</a>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             </div>
                         </div>
+
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-3">
-                    <div class="card journey-package-card shadow-sm  h-100">
-                        <div class="position-relative">
-                            <div class="label">Top Rated</div>
-
-                            <img loading="lazy" src="https://www.taxicoimbatore.com/img/eight.jpg" class="card-img-top rounded-top"
-                                alt="Tour Image">
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <!-- <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge">2 Cars Available</span>
-                                <span class="text-muted small">Half Day Tour</span>
-                            </div> -->
-                            <h6 class="card-title fw-bold text-dark">
-                                One Day Tour Packages
-                            </h6>
-                            <p class="tour-desc">Ooty Centenary Rose Garden, Boat House,
-                                Children Park, Government Museum, Dodabeta Peak,
-                                Botanical Garden, Coonoor Sims Park, Wax Museum , Ketti Valley View.</p>
-                            <div class="tour-duration d-flex gap-3">
-                                <p class="">
-                                    <i class="fas fa-clock me-1"></i> 1 day
-                                </p>
-                                <p class="">
-                                    <i class="fas fa-user-friends me-1"></i> 4–10 guests
-                                </p>
-                            </div>
-
-                            <div class="d-flex justify-content-between align-items-end mt-auto">
-                                <div>
-                                    <h6 class="package--price mb-0">₹2999.00</h6>
-                                    <small class="text-muted">/ Per Package</small>
-                                </div>
-                                <a href="./main-packages.html" class="btn common__btn rounded btn-sm">View Package</a>
-                            </div>
-                        </div>
+                <div class="col-md-8">
+                    <div class="selected-filters" id="selectedFilters">
+                        <!-- Selected Filters will appear here -->
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-3">
-                    <div class="card journey-package-card shadow-sm  h-100">
-                        <div class="position-relative">
-                            <div class="label">Top Rated</div>
-
-                            <img loading="lazy" src="https://www.taxicoimbatore.com/img/five.jpg" class="card-img-top rounded-top"
-                                alt="Tour Image">
-                        </div>
-                        <div class="card-body d-flex flex-column">
-                            <!-- <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge">2 Cars Available</span>
-                                <span class="text-muted small">Half Day Tour</span>
-                            </div> -->
-                            <h6 class="card-title fw-bold text-dark">
-                                Two Day Tour Packages
-                            </h6>
-                            <p class="tour-desc">Ooty Centenary Rose Garden, Boat House,
-                                Children Park, Government Museum, Dodabeta Peak,
-                                Botanical Garden, Coonoor Sims Park, Wax Museum , Ketti Valley View.</p>
-                            <div class="tour-duration d-flex gap-3">
-                                <p class="">
-                                    <i class="fas fa-clock me-1"></i> 1 day
-                                </p>
-                                <p class="">
-                                    <i class="fas fa-user-friends me-1"></i> 4–10 guests
-                                </p>
-                            </div>
-
-                            <div class="d-flex justify-content-between align-items-end mt-auto">
-                                <div>
-                                    <h6 class="package--price mb-0">₹2999.00</h6>
-                                    <small class="text-muted">/ Per Package</small>
-                                </div>
-                                <a href="./main-packages.html" class="btn common__btn rounded btn-sm">View Package</a>
-                            </div>
-                        </div>
+                    <!-- Mobile-only filter button -->
+                    <!-- Visible only on small screens -->
+                    <div class="d-md-none mb-3">
+                        <button type="button" class="btn  btn-sm" data-bs-toggle="modal" data-bs-target="#filterModal">
+                            <i class="fas fa-sliders me-2"></i>
+                        </button>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-3">
-                    <div class="card journey-package-card shadow-sm  h-100">
-                        <div class="position-relative">
-                            <div class="label">Top Rated</div>
 
-                            <img loading="lazy" src="https://www.taxicoimbatore.com/img/six.jpg" class="card-img-top rounded-top"
-                                alt="Tour Image">
+                    <div class="row g-3">
+
+                        <!-- Selected Filters -->
+                        <div class="selected-filters" id="selectedFilters">
+                            <!-- Selected Filters will appear here -->
                         </div>
-                        <div class="card-body d-flex flex-column">
-                            <!-- <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="badge">2 Cars Available</span>
-                                <span class="text-muted small">Half Day Tour</span>
-                            </div> -->
-                            <h6 class="card-title fw-bold text-dark">
-                                Three Day Tour Packages
-                            </h6>
-                            <p class="tour-desc">Ooty Centenary Rose Garden, Boat House,
-                                Children Park, Government Museum, Dodabeta Peak,
-                                Botanical Garden, Coonoor Sims Park, Wax Museum , Ketti Valley View.</p>
-                            <div class="tour-duration d-flex gap-3">
-                                <p class="">
-                                    <i class="fas fa-clock me-1"></i> 1 day
-                                </p>
-                                <p class="">
-                                    <i class="fas fa-user-friends me-1"></i> 4–10 guests
-                                </p>
-                            </div>
-
-                            <div class="d-flex justify-content-between align-items-end mt-auto">
-                                <div>
-                                    <h6 class="package--price mb-0">₹2999.00</h6>
-                                    <small class="text-muted">/ Per Package</small>
+                        <div class="col-lg-6 col-12">
+                            <div class="card journey-package-card shadow-sm  h-100">
+                                <div class="position-relative">
+                                    <div class="label">Top Rated</div>
+                                    <img loading="lazy" src="./assets/img/packages/eight.jpg"
+                                        class="card-img-top rounded-top" alt="Tour Image">
                                 </div>
-                                <a href="./main-packages.html" class="btn common__btn rounded btn-sm">View Package</a>
+                                <div class="card-body d-flex flex-column">
+                                    <h6 class="card-title fw-bold text-dark">
+                                        One Day Tour Packages
+                                    </h6>
+                                    <p class="tour-desc">
+                                        Lonavala, Khandala, Lavasa, Mahabaleshwar, Panchgani, Alibaug, Matheran, Satara,
+                                        Kolad,
+                                        Bhimashankar
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-end mt-auto">
+                                        <div>
+                                            <small class="text-muted">Start Form</small>
+                                            <h6 class="package--price mb-0">₹2999.00 </h6>
+                                            <span class="small text-muted">(Prices may
+                                                vary)</span>
+                                        </div>
+                                        <a href="./main-packages.html" class="btn common__btn rounded btn-sm">View
+                                            Package</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="card journey-package-card shadow-sm  h-100">
+                                <div class="position-relative">
+                                    <div class="label">Top Rated</div>
+                                    <img loading="lazy" src="./assets/img/packages/five.jpg"
+                                        class="card-img-top rounded-top" alt="Tour Image">
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <h6 class="card-title fw-bold text-dark">
+                                        Two Day Tour Packages
+                                    </h6>
+                                    <p class="tour-desc">
+                                        Lonavala, Khandala, Lavasa, Mahabaleshwar, Panchgani, Alibaug, Matheran, Satara,
+                                        Kolad,
+                                        Bhimashankar
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-end mt-auto">
+                                        <div>
+                                            <small class="text-muted">Start Form</small>
+                                            <h6 class="package--price mb-0">₹2999.00 </h6>
+                                            <span class="small text-muted">(Prices may
+                                                vary)</span>
+                                        </div>
+                                        <a href="./main-packages.html" class="btn common__btn rounded btn-sm">View
+                                            Package</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="card journey-package-card shadow-sm  h-100">
+                                <div class="position-relative">
+                                    <div class="label">Top Rated</div>
+                                    <img loading="lazy" src="./assets/img/packages/six.jpg"
+                                        class="card-img-top rounded-top" alt="Tour Image">
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <h6 class="card-title fw-bold text-dark">
+                                        Three Day Tour Packages
+                                    </h6>
+                                    <p class="tour-desc">
+                                        Lonavala, Khandala, Lavasa, Mahabaleshwar, Panchgani, Alibaug, Matheran, Satara,
+                                        Kolad,
+                                        Bhimashankar
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-end mt-auto">
+                                        <div>
+                                            <small class="text-muted">Start Form</small>
+                                            <h6 class="package--price mb-0">₹2999.00 </h6>
+                                            <span class="small text-muted">(Prices may
+                                                vary)</span>
+                                        </div>
+                                        <a href="./main-packages.html" class="btn common__btn rounded btn-sm">View
+                                            Package</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="card journey-package-card shadow-sm  h-100">
+                                <div class="position-relative">
+                                    <div class="label">Top Rated</div>
+                                    <img loading="lazy" src="./assets/img/packages/eight.jpg"
+                                        class="card-img-top rounded-top" alt="Tour Image">
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <h6 class="card-title fw-bold text-dark">
+                                        One Day Tour Packages
+                                    </h6>
+                                    <p class="tour-desc">
+                                        Lonavala, Khandala, Lavasa, Mahabaleshwar, Panchgani, Alibaug, Matheran, Satara,
+                                        Kolad,
+                                        Bhimashankar
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-end mt-auto">
+                                        <div>
+                                            <small class="text-muted">Start Form</small>
+                                            <h6 class="package--price mb-0">₹2999.00 </h6>
+                                            <span class="small text-muted">(Prices may
+                                                vary)</span>
+                                        </div>
+                                        <a href="./main-packages.html" class="btn common__btn rounded btn-sm">View
+                                            Package</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="card journey-package-card shadow-sm  h-100">
+                                <div class="position-relative">
+                                    <div class="label">Top Rated</div>
+                                    <img loading="lazy" src="./assets/img/packages/five.jpg"
+                                        class="card-img-top rounded-top" alt="Tour Image">
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <h6 class="card-title fw-bold text-dark">
+                                        Two Day Tour Packages
+                                    </h6>
+                                    <p class="tour-desc">
+                                        Lonavala, Khandala, Lavasa, Mahabaleshwar, Panchgani, Alibaug, Matheran, Satara,
+                                        Kolad,
+                                        Bhimashankar
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-end mt-auto">
+                                        <div>
+                                            <small class="text-muted">Start Form</small>
+                                            <h6 class="package--price mb-0">₹2999.00 </h6>
+                                            <span class="small text-muted">(Prices may
+                                                vary)</span>
+                                        </div>
+                                        <a href="./main-packages.html" class="btn common__btn rounded btn-sm">View
+                                            Package</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                            <div class="card journey-package-card shadow-sm  h-100">
+                                <div class="position-relative">
+                                    <div class="label">Top Rated</div>
+                                    <img loading="lazy" src="./assets/img/packages/six.jpg"
+                                        class="card-img-top rounded-top" alt="Tour Image">
+                                </div>
+                                <div class="card-body d-flex flex-column">
+                                    <h6 class="card-title fw-bold text-dark">
+                                        Three Day Tour Packages
+                                    </h6>
+                                    <p class="tour-desc">
+                                        Lonavala, Khandala, Lavasa, Mahabaleshwar, Panchgani, Alibaug, Matheran, Satara,
+                                        Kolad,
+                                        Bhimashankar
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-end mt-auto">
+                                        <div>
+                                            <small class="text-muted">Start Form</small>
+                                            <h6 class="package--price mb-0">₹2999.00 </h6>
+                                            <span class="small text-muted">(Prices may
+                                                vary)</span>
+                                        </div>
+                                        <a href="./main-packages.html" class="btn common__btn rounded btn-sm">View
+                                            Package</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
@@ -361,6 +389,98 @@
 
     <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Function to handle filter selection and display selected filter
+        function selectFilter(filterType, value) {
+            const selectedFiltersDiv = document.getElementById('selectedFilters');
+
+            // Prevent adding duplicates
+            if (document.querySelector(`.selected-filter[data-value="${value}"]`)) {
+                return;
+            }
+
+            // Create a new filter chip
+            const filterChip = document.createElement('div');
+            filterChip.classList.add('selected-filter');
+            filterChip.setAttribute('data-type', filterType);
+            filterChip.setAttribute('data-value', value);
+
+            // Create text node
+            const textNode = document.createElement('span');
+            textNode.innerText = `${filterType}: ${value}`;
+
+            // Create remove button
+            const removeButton = document.createElement('span');
+            removeButton.innerText = '×';
+            removeButton.classList.add('remove-btn');
+            removeButton.addEventListener('click', function () {
+                filterChip.remove();
+            });
+
+            filterChip.appendChild(textNode);
+            filterChip.appendChild(removeButton);
+
+            // Append chip to selected filters
+            selectedFiltersDiv.appendChild(filterChip);
+        }
+
+        // Apply filters function
+        function applyFilters() {
+            const selectedFilters = [];
+            document.querySelectorAll('.selected-filter').forEach(filter => {
+                selectedFilters.push(`${filter.dataset.type}: ${filter.dataset.value}`);
+            });
+            alert('Filters Applied: ' + selectedFilters.join(', '));
+        }
+
+        // Reset all selected filters
+        function resetFilters() {
+            document.getElementById('selectedFilters').innerHTML = '';
+        }
+
+        // Add event listeners to dropdowns to handle selection
+        document.getElementById('filterCategory').addEventListener('change', function () {
+            selectFilter('Category', this.value);
+        });
+
+        document.getElementById('filterDays').addEventListener('change', function () {
+            selectFilter('Days', this.value);
+        });
+
+        document.getElementById('filterCity').addEventListener('change', function () {
+            selectFilter('City', this.value);
+        });
+
+        document.getElementById('filterTheme').addEventListener('change', function () {
+            selectFilter('Theme', this.value);
+        });
+    </script>
+   <script>
+    function extractCodeForSmallScreens() {
+        const mobilefilter = document.getElementById("mobilefilter");
+        const filterCode = document.getElementById("filterCode");
+        const selectedFilters = document.getElementById("selectedFilters");
+
+        if (window.innerWidth < 768 && filterCode && selectedFilters) {
+            console.log("Screen is smaller than col-md-6 (768px)");
+
+            const div = document.createElement("div"); // Fixed here
+
+            // Move the actual elements
+            div.appendChild(selectedFilters);
+            div.appendChild(filterCode);
+
+            mobilefilter.appendChild(div);
+        }
+    }
+
+    window.addEventListener('load', extractCodeForSmallScreens);
+    window.addEventListener('resize', extractCodeForSmallScreens);
+</script>
+
+
+
 </body>
 
 </html>

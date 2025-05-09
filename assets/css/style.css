@@ -1,0 +1,85 @@
+.hero--banner {
+  align-content: center;
+  min-height: 70vh;
+  background-image: url("../img/banner-package.webp");
+  background-position: bottom;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero--banner h1 {
+  font-size: 40px;
+  font-weight: 600;
+  color: white;
+}
+
+.hero--banner p {
+  color: white;
+  font-size: 20px;
+}
+
+.journey-package-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.journey-package-card .badge {
+  background-color: var(--heading-text-color);
+}
+
+.fas.fa-car.wishlist-icon {
+  font-size: 12px;
+  border: 1px solid black;
+  color: black;
+}
+
+.journey-package-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.journey-package-card img.card-img-top {
+  aspect-ratio: 16 / 11;
+  /* or 4 / 3, or 3 / 2 — based on your design */
+  width: 100%;
+  object-fit: cover;
+  border-radius: 0.5rem 0.5rem 0 0;
+  /* optional rounded top corners */
+}
+
+.journey-package-card .card-title {
+  font-size: 21px;
+  font-weight: 500;
+}
+
+.journey-package-card .package--price {
+  font-weight: 500;
+  color: var(--primary-text-color);
+}
+
+.journey-package-card .tour-duration p {
+  color: #6c757d;
+  font-size: 14px;
+}
+
+.journey-package-card .tour-desc {
+  color: #737373;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.journey-package-card .label {
+  position: absolute;
+  top: 22px;
+  left: 25px;
+  border-radius: 50px;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 700;
+  color: var(--primary-color);
+  z-index: 12;
+  padding: 5px 22px;
+  background-color: white;
+}

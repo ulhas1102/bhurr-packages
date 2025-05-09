@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Filter with Bootstrap Dropdown</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .filter-container {
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .filter-container label {
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .filter-container select,
+        .filter-container .btn {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .selected-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .selected-filter {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .selected-filter span {
+            margin-right: 8px;
+        }
+
+        .remove-btn {
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            margin-left: 5px;
+        }
+
+        .dropdown-menu {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <!-- Filter Section -->
+            <div class="col-md-3">
+                <div class="filter-container">
+                    <!-- Category Filter -->
+                    <div class="mb-3">
+                        <label for="filterCategory" class="form-label">Category</label>
+                        <select id="filterCategory" class="form-select custom-select">
+                            <option selected disabled>Select Category</option>
+                            <option>One Day</option>
+                            <option>Two Days</option>
+                            <option>Three Days</option>
+                            <option>Weekend</option>
+                        </select>
+                    </div>
+
+                    <!-- Days Filter -->
+                    <div class="mb-3">
+                        <label for="filterDays" class="form-label">Days</label>
+                        <select id="filterDays" class="form-select custom-select">
+                            <option selected disabled>Select Days</option>
+                            <option>1 Day</option>
+                            <option>2 Days</option>
+                            <option>3 Days</option>
+                            <option>4+ Days</option>
+                        </select>
+                    </div>
+
+                    <!-- City Filter -->
+                    <div class="mb-3">
+                        <label for="filterCity" class="form-label">City</label>
+                        <select id="filterCity" class="form-select custom-select">
+                            <option selected disabled>Select City</option>
+                            <option>Pune</option>
+                            <option>Mumbai</option>
+                            <option>Lonavala</option>
+                            <option>Mahabaleshwar</option>
+                        </select>
+                    </div>
+
+                    <!-- Theme Filter -->
+                    <div class="mb-3">
+                        <label for="filterTheme" class="form-label">Theme</label>
+                        <select id="filterTheme" class="form-select custom-select">
+                            <option selected disabled>Select Theme</option>
+                            <option>Adventure</option>
+                            <option>Nature</option>
+                            <option>Family</option>
+                            <option>Romantic</option>
+                        </select>
+                    </div>
+
+                    <!-- Apply Button -->
+                    <div class="d-grid mb-2">
+                        <button class="btn btn-primary w-100" onclick="applyFilters()">Apply Filter</button>
+                    </div>
+
+                    <!-- Reset Button -->
+                    <div class="d-grid mb-2">
+                        <button class="btn btn-outline-secondary w-100" onclick="resetFilters()">Reset</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selected Filters -->
+            <div class="col-md-9">
+                <div class="selected-filters" id="selectedFilters">
+                    <!-- Selected Filters will appear here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Function to handle filter selection and display selected filter
+        function selectFilter(filterType, value) {
+            const selectedFiltersDiv = document.getElementById('selectedFilters');
+
+            // Prevent adding duplicates
+            if (document.querySelector(`.selected-filter[data-value="${value}"]`)) {
+                return;
+            }
+
+            // Create a new filter chip
+            const filterChip = document.createElement('div');
+            filterChip.classList.add('selected-filter');
+            filterChip.setAttribute('data-type', filterType);
+            filterChip.setAttribute('data-value', value);
+
+            // Create text node
+            const textNode = document.createElement('span');
+            textNode.innerText = `${filterType}: ${value}`;
+
+            // Create remove button
+            const removeButton = document.createElement('span');
+            removeButton.innerText = '×';
+            removeButton.classList.add('remove-btn');
+            removeButton.addEventListener('click', function () {
+                filterChip.remove();
+            });
+
+            filterChip.appendChild(textNode);
+            filterChip.appendChild(removeButton);
+
+            // Append chip to selected filters
+            selectedFiltersDiv.appendChild(filterChip);
+        }
+
+        // Apply filters function
+        function applyFilters() {
+            const selectedFilters = [];
+            document.querySelectorAll('.selected-filter').forEach(filter => {
+                selectedFilters.push(`${filter.dataset.type}: ${filter.dataset.value}`);
+            });
+            alert('Filters Applied: ' + selectedFilters.join(', '));
+        }
+
+        // Reset all selected filters
+        function resetFilters() {
+            document.getElementById('selectedFilters').innerHTML = '';
+        }
+
+        // Add event listeners to dropdowns to handle selection
+        document.getElementById('filterCategory').addEventListener('change', function () {
+            selectFilter('Category', this.value);
+        });
+
+        document.getElementById('filterDays').addEventListener('change', function () {
+            selectFilter('Days', this.value);
+        });
+
+        document.getElementById('filterCity').addEventListener('change', function () {
+            selectFilter('City', this.value);
+        });
+
+        document.getElementById('filterTheme').addEventListener('change', function () {
+            selectFilter('Theme', this.value);
+        });
+    </script>
+</body>
+
+</html>
