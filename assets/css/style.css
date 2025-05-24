@@ -91,26 +91,6 @@
   font-size: 12px;
   background-color: white;
 }
-.filter-container {
-  padding: 15px;
-  /* background-color: #f8f9fa; */
-  border-radius: 15px;
-  border: 1px solid #c2c3c5;
-  position: sticky;
-  top: 10px;
-}
-
-.filter-container label {
-  font-weight: 600;
-  margin-bottom: 5px;
-}
-
-.filter-container select,
-.filter-container .btn {
-  width: 100%;
-  padding: 10px;
-  /* margin-bottom: 15px; */
-}
 
 .selected-filters {
   padding: 0 5px;
@@ -123,7 +103,52 @@
   top: 0px;
   background-color: rgb(247, 243, 243);
 }
+.filter-container {
+  max-width: 600px;
+  margin: auto;
+  border-radius: 20px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  border: 1px solid #888b8e;
+  padding: 10px;
+  box-shadow: none;
+  background-color: #faf7f4;
+}
 
+.filter-container .filter-accordion .accordion-button {
+  font-weight: 600;
+  background-color: transparent;
+  border: none;
+  padding-bottom:;
+  box-shadow: none;
+}
+
+.filter-container .filter-accordion .accordion-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.filter-container .accordion-body {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  background-color: transparent;
+}
+
+.filter-container .accordion-item {
+  border: none;
+  border-radius: 0;
+  /* margin-bottom: 10px; */
+  background-color: transparent;
+  box-shadow: none;
+  border-bottom: 1px solid #888b8e;
+  border-radius: 0;
+}
+
+.filter-container h2.title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+}
 .selected-filter {
   margin: 5px 0;
   background-color: var(--heading-text-color);
@@ -230,7 +255,10 @@
   color: white;
   font-size: 20px;
 }
-
+.package--info {
+  position: sticky;
+  top: 10px;
+}
 .package--info .place-name {
   font-size: 24px;
   font-weight: 500;
@@ -383,6 +411,12 @@
   border-radius: 15px;
   overflow: hidden;
 }
+.package--card .car--img {
+  /* object-fit: cover;
+  width:80%;
+  aspect-ratio: 2/1;
+  padding: 20px; */
+}
 
 .package--card .fas.fa-car.wishlist-icon {
   font-size: 12px;
@@ -393,15 +427,6 @@
 .package--card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.package--card img.card-img-top {
-  aspect-ratio: 16 / 11;
-  /* or 4 / 3, or 3 / 2 — based on your design */
-  width: 100%;
-  object-fit: cover;
-  border-radius: 0.5rem 0.5rem 0 0;
-  /* optional rounded top corners */
 }
 
 .package--card .package--price {
@@ -429,9 +454,35 @@
 
 .popular-tours {
   border: 1px solid #e4e8eb;
-  padding: 10px 10px;
+  padding: 10px 15px 10px 10px;
   border-radius: 20px;
-  height: 100%;
+  width: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+  top: 0;
+}
+.filter {
+  border: 1px solid #e4e8eb;
+  padding: 10px 15px 10px 10px;
+  border-radius: 20px;
+}
+.filter-section {
+  background: #fff;
+  border: 1px solid #e4e8eb;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.filter .nav-pills .nav-link {
+  border: 1px solid #68696a;
+  font-weight: 500;
+  color: #333;
+}
+
+.filter .nav-pills .nav-link.active {
+  color: #fff;
+  border-radius: 5px;
 }
 
 .popular-tours .card {
@@ -505,7 +556,7 @@
 .package--gallery .carousel-item img {
   display: block;
   width: 100%;
-  height: 300px;
+  height: 350px;
   aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: 20px;
@@ -576,12 +627,104 @@
 --secondary-text-color: #000;
 --heading-text-color: #98229b; */
 
-.tab-content .heading--text::before {
+.tab-scroll-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #faf7f4;
+  border-top:1px solid #888b8e;
+  border-bottom:1px solid #888b8e;
+  border-right:1px solid #888b8e;
+  border-top-right-radius:20px;
+  margin-bottom: 10px;
+}
+
+.tab-scroll-wrapper {
+  overflow: hidden;
+  flex: 1;
+}
+
+.tabsWrapper {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px;
+  margin: 0;
+  list-style: none;
+  gap: 5px;
+  scroll-behavior: smooth;
+
+  /* Hide scrollbar */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.tabsWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.tabsWrapper li {
+  display: flex;
+  padding: 5px 15px;
+  cursor: pointer;
+  flex: 0 0 auto;
+  gap: 5px;
+  align-items: center;
+  border-radius: 20px;
+  color: white;
+  background-color: var(
+    --primary-color
+  ); /* You can define --primary-color in :root */
+  transition: all 0.3s;
+}
+
+.tabsWrapper li.active {
+  font-weight: 600;
+  position: relative;
+}
+
+.tabsWrapper li.active::after {
   content: "";
   position: absolute;
-  left: 0;
-  top:22px;
-  background:var(--primary-color);
+  height: 4px;
+  width: 80%;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #68696a;
+}
+
+.tabsWrapper li .name {
+  display: block;
+  font-size: 14px;
+}
+.tabsWrapper li .packCount {
+  font-size: 12px;
+}
+
+.arrow-btn {
+  align-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #222222ba;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #f8f9fa;
+  padding: 0 10px;
+  width: 30px;
   height: 30px;
-  width: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.arrow-btn i{
+  font-size: 15px;
+}
+.arrow-btn:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+.filter-container .accordion-body{
+  padding-top: 0;
 }

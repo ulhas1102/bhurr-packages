@@ -3,205 +3,256 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Filter with Bootstrap Dropdown</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Package Filter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <style>
+        body {
+            padding: 20px;
+        }
+
         .filter-container {
-            padding: 15px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-        }
-
-        .filter-container label {
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .filter-container select,
-        .filter-container .btn {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-        }
-
-        .selected-filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .selected-filter {
-            background-color: #007bff;
-            color: white;
-            padding: 5px 15px;
+            max-width: 600px;
+            margin: auto;
             border-radius: 20px;
-            display: flex;
-            align-items: center;
-            font-size: 14px;
+            border: 1px solid #888b8e;
+            padding: 10px;
+            box-shadow: none;
+            background-color: transparent;
         }
 
-        .selected-filter span {
-            margin-right: 8px;
+        .filter-container .filter-accordion .accordion-button {
+            font-weight: 600;
+            background-color: transparent;
+            border: none;
+            box-shadow: none;
         }
 
-        .remove-btn {
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 16px;
-            margin-left: 5px;
+        .filter-container .filter-accordion .accordion-button:focus {
+            outline: none;
+            box-shadow: none;
         }
 
-        .dropdown-menu {
-            max-height: 200px;
-            overflow-y: auto;
+        .filter-container .accordion-body {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            background-color: transparent;
+        }
+
+        .filter-container .accordion-item {
+            border: none;
+            border-radius: 0;
+            margin-bottom: 10px;
+            background-color: transparent;
+            box-shadow: none;
+            border-bottom: 1px solid #888b8e;
+            border-radius: 0;
+        }
+
+        .filter-container h2.title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
         }
     </style>
+
 </head>
 
 <body>
-    <div class="container mt-5">
-        <div class="row">
-            <!-- Filter Section -->
+
+    <div class="container">
+        <div class="tow">
             <div class="col-md-3">
                 <div class="filter-container">
-                    <!-- Category Filter -->
-                    <div class="mb-3">
-                        <label for="filterCategory" class="form-label">Category</label>
-                        <select id="filterCategory" class="form-select custom-select">
-                            <option selected disabled>Select Category</option>
-                            <option>One Day</option>
-                            <option>Two Days</option>
-                            <option>Three Days</option>
-                            <option>Weekend</option>
-                        </select>
-                    </div>
+                    <h2 class="title">Filter Packages</h2>
 
-                    <!-- Days Filter -->
-                    <div class="mb-3">
-                        <label for="filterDays" class="form-label">Days</label>
-                        <select id="filterDays" class="form-select custom-select">
-                            <option selected disabled>Select Days</option>
-                            <option>1 Day</option>
-                            <option>2 Days</option>
-                            <option>3 Days</option>
-                            <option>4+ Days</option>
-                        </select>
-                    </div>
+                    <div class="accordion filter-accordion" id="filterAccordion">
 
-                    <!-- City Filter -->
-                    <div class="mb-3">
-                        <label for="filterCity" class="form-label">City</label>
-                        <select id="filterCity" class="form-select custom-select">
-                            <option selected disabled>Select City</option>
-                            <option>Pune</option>
-                            <option>Mumbai</option>
-                            <option>Lonavala</option>
-                            <option>Mahabaleshwar</option>
-                        </select>
-                    </div>
+                        <!-- Duration -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingDuration">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseDuration">
+                                    Duration (in Nights)
+                                </button>
+                            </h2>
+                            <div id="collapseDuration" class="accordion-collapse collapse show"
+                                data-bs-parent="#filterAccordion">
+                                <div class="accordion-body">
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="duration1"><label class="form-check-label" for="duration1">1-2
+                                            Nights</label></div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="duration2"><label class="form-check-label" for="duration2">3-5
+                                            Nights</label></div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="duration3"><label class="form-check-label" for="duration3">6+
+                                            Nights</label></div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <!-- Theme Filter -->
-                    <div class="mb-3">
-                        <label for="filterTheme" class="form-label">Theme</label>
-                        <select id="filterTheme" class="form-select custom-select">
-                            <option selected disabled>Select Theme</option>
-                            <option>Adventure</option>
-                            <option>Nature</option>
-                            <option>Family</option>
-                            <option>Romantic</option>
-                        </select>
-                    </div>
+                        <!-- Flights -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingFlights">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseFlights">
+                                    Flights
+                                </button>
+                            </h2>
+                            <div id="collapseFlights" class="accordion-collapse collapse"
+                                data-bs-parent="#filterAccordion">
+                                <div class="accordion-body">
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="flightIncluded"><label class="form-check-label"
+                                            for="flightIncluded">Included</label></div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="flightExcluded"><label class="form-check-label"
+                                            for="flightExcluded">Excluded</label></div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <!-- Apply Button -->
-                    <div class="d-grid mb-2">
-                        <button class="btn btn-primary w-100" onclick="applyFilters()">Apply Filter</button>
-                    </div>
+                        <!-- Budget -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingBudget">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseBudget">
+                                    Budget (per person)
+                                </button>
+                            </h2>
+                            <div id="collapseBudget" class="accordion-collapse collapse"
+                                data-bs-parent="#filterAccordion">
+                                <div class="accordion-body">
+                                    <input type="range" class="form-range" min="5000" max="100000" step="1000"
+                                        id="budgetRange">
+                                    <div class="d-flex justify-content-between"><span>₹5,000</span><span>₹100,000</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <!-- Reset Button -->
-                    <div class="d-grid mb-2">
-                        <button class="btn btn-outline-secondary w-100" onclick="resetFilters()">Reset</button>
+                        <!-- Hotel Category -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingHotel">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseHotel">
+                                    Hotel Category
+                                </button>
+                            </h2>
+                            <div id="collapseHotel" class="accordion-collapse collapse"
+                                data-bs-parent="#filterAccordion">
+                                <div class="accordion-body">
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="hotel3"><label class="form-check-label" for="hotel3">3 Star</label>
+                                    </div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="hotel4"><label class="form-check-label" for="hotel4">4 Star</label>
+                                    </div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="hotel5"><label class="form-check-label" for="hotel5">5 Star</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cities -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingCities">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseCities">
+                                    Cities
+                                </button>
+                            </h2>
+                            <div id="collapseCities" class="accordion-collapse collapse"
+                                data-bs-parent="#filterAccordion">
+                                <div class="accordion-body">
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="city1"><label class="form-check-label" for="city1">Mumbai</label></div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="city2"><label class="form-check-label" for="city2">Delhi</label></div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="city3"><label class="form-check-label" for="city3">Bangalore</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Themes -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingThemes">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThemes">
+                                    Themes
+                                </button>
+                            </h2>
+                            <div id="collapseThemes" class="accordion-collapse collapse"
+                                data-bs-parent="#filterAccordion">
+                                <div class="accordion-body">
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="theme1"><label class="form-check-label" for="theme1">Adventure</label>
+                                    </div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="theme2"><label class="form-check-label" for="theme2">Honeymoon</label>
+                                    </div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="theme3"><label class="form-check-label" for="theme3">Family</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Package Type -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingType">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseType">
+                                    Package Type
+                                </button>
+                            </h2>
+                            <div id="collapseType" class="accordion-collapse collapse"
+                                data-bs-parent="#filterAccordion">
+                                <div class="accordion-body">
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="typeGroup"><label class="form-check-label" for="typeGroup">Group</label>
+                                    </div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="typePrivate"><label class="form-check-label"
+                                            for="typePrivate">Private</label></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Premium Packages -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingPremium">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapsePremium">
+                                    Premium Packages
+                                </button>
+                            </h2>
+                            <div id="collapsePremium" class="accordion-collapse collapse"
+                                data-bs-parent="#filterAccordion">
+                                <div class="accordion-body">
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="premiumYes"><label class="form-check-label" for="premiumYes">Yes</label>
+                                    </div>
+                                    <div class="form-check"><input class="form-check-input" type="checkbox"
+                                            id="premiumNo"><label class="form-check-label" for="premiumNo">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-
-            <!-- Selected Filters -->
-            <div class="col-md-9">
-                <div class="selected-filters" id="selectedFilters">
-                    <!-- Selected Filters will appear here -->
-                </div>
-            </div>
+            <div class="col-md-9"></div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Function to handle filter selection and display selected filter
-        function selectFilter(filterType, value) {
-            const selectedFiltersDiv = document.getElementById('selectedFilters');
-
-            // Prevent adding duplicates
-            if (document.querySelector(`.selected-filter[data-value="${value}"]`)) {
-                return;
-            }
-
-            // Create a new filter chip
-            const filterChip = document.createElement('div');
-            filterChip.classList.add('selected-filter');
-            filterChip.setAttribute('data-type', filterType);
-            filterChip.setAttribute('data-value', value);
-
-            // Create text node
-            const textNode = document.createElement('span');
-            textNode.innerText = `${filterType}: ${value}`;
-
-            // Create remove button
-            const removeButton = document.createElement('span');
-            removeButton.innerText = '×';
-            removeButton.classList.add('remove-btn');
-            removeButton.addEventListener('click', function () {
-                filterChip.remove();
-            });
-
-            filterChip.appendChild(textNode);
-            filterChip.appendChild(removeButton);
-
-            // Append chip to selected filters
-            selectedFiltersDiv.appendChild(filterChip);
-        }
-
-        // Apply filters function
-        function applyFilters() {
-            const selectedFilters = [];
-            document.querySelectorAll('.selected-filter').forEach(filter => {
-                selectedFilters.push(`${filter.dataset.type}: ${filter.dataset.value}`);
-            });
-            alert('Filters Applied: ' + selectedFilters.join(', '));
-        }
-
-        // Reset all selected filters
-        function resetFilters() {
-            document.getElementById('selectedFilters').innerHTML = '';
-        }
-
-        // Add event listeners to dropdowns to handle selection
-        document.getElementById('filterCategory').addEventListener('change', function () {
-            selectFilter('Category', this.value);
-        });
-
-        document.getElementById('filterDays').addEventListener('change', function () {
-            selectFilter('Days', this.value);
-        });
-
-        document.getElementById('filterCity').addEventListener('change', function () {
-            selectFilter('City', this.value);
-        });
-
-        document.getElementById('filterTheme').addEventListener('change', function () {
-            selectFilter('Theme', this.value);
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
